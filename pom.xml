@@ -106,6 +106,13 @@
     </repository>
   </distributionManagement>
 
+  <repositories>
+      <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/dbck/*</url>
+      </repository>
+  </repositories>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
