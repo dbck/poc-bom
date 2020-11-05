@@ -56,9 +56,9 @@ jobs:
         MVN_CLI_OPTIONS: -s .github/.m2/settings.xml --quiet --batch-mode --no-transfer-progress
         GITHUB_TOKEN: ${{ github.token }}
 
-    - name: Quality check with maven and sonar
-      run: mvn ${MVN_CLI_OPTIONS} -Dsha1="${REVISION_BRANCH}" -Dchangelist="${REVISION_TYPE}" -Pquality verify # Test already run in previous step
-      env:
-        MVN_CLI_OPTIONS: -s .github/.m2/settings.xml --quiet --batch-mode --no-transfer-progress
-        GITHUB_TOKEN: ${{ github.token }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#    - name: Quality check with maven and sonar
+#      run: mvn ${MVN_CLI_OPTIONS} -Dsha1="${REVISION_BRANCH}" -Dchangelist="${REVISION_TYPE}" -Pquality verify # Test already run in previous step
+#      env:
+#        MVN_CLI_OPTIONS: -s .github/.m2/settings.xml --quiet --batch-mode --no-transfer-progress
+#        GITHUB_TOKEN: ${{ github.token }}
+#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
