@@ -39,10 +39,10 @@ jobs:
         mvn ${MVN_CLI_OPTIONS} -Dsha1="${REVISION_BRANCH}" -Dchangelist="${REVISION_TYPE}" -Prelease -Dusername=$GITHUB_TOKEN clean deploy
         # Increment revision of develop branch based on main revision value
         export NEXT_DEVELOPMENT_VERSION="$(mvn ${MVN_CLI_OPTIONS} build-helper:parse-version -DgenerateBackupPoms=false -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} help:evaluate -Dexpression=newVersion -q -DforceStdout)"
-        git reset --hard origin/main
+        git reset --hard origin/release
         git fetch --all --tags
-        git checkout develop
-        git reset --hard origin/develop
+        git checkout main
+        git reset --hard origin/main
         git pull --all --ff-only
         mvn ${MVN_CLI_OPTIONS} build-helper:parse-version versions:set-property -DgenerateBackupPoms=false -Dproperty=revision -DnewVersion=${NEXT_DEVELOPMENT_VERSION}
         mvn ${MVN_CLI_OPTIONS} -Dsha1="" -Dchangelist="-SNAPSHOT" compile
