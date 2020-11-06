@@ -38,6 +38,8 @@
     <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
     <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+    <maven.plugins.maven-gpg-plugin.version>1.5</maven.plugins.maven-gpg-plugin.version>
+    <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.7</org.sonatype.plugins-nexus-staging-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <org.junit.version>5.7.0</org.junit.version>
     <org.assertj.version>3.18.0</org.assertj.version>
@@ -99,6 +101,11 @@
   </ciManagement>
 
   <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <name>Central Repository OSSRH (Snapshots)</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
     <repository>
       <id>ossrh</id>
       <name>Central Repository OSSRH</name>
@@ -451,7 +458,7 @@
               <id>source-jar</id>
               <phase>verify</phase>
               <goals>
-                <goal>jar</goal>
+                <goal>jar-no-fork</goal>
               </goals>
             </execution>
           </executions>
@@ -486,6 +493,31 @@
               <phase>deploy</phase>
               <goals>
                 <goal>tag</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>${org.sonatype.plugins-nexus-staging-maven-plugin.version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>ossrh</serverId>
+            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${maven.plugins.maven-gpg-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
               </goals>
             </execution>
           </executions>
@@ -594,6 +626,10 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-scm-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
