@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>0.0.5-SNAPSHOT</version>
+  <version>0.0.7-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>poc-bom</name>
   <description>POC BOM</description>
@@ -51,7 +51,7 @@
   <properties>
     <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.java.checkstyle.reportPaths>/Users/dboeckma/github/poc-bom/target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
+    <sonar.java.checkstyle.reportPaths>/home/runner/work/poc-bom/poc-bom/target/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
     <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <sha1></sha1>
@@ -59,9 +59,9 @@
     <org.assertj.version>3.18.0</org.assertj.version>
     <com.github.spotbugs.spotbugs-maven-plugin.version>4.1.4</com.github.spotbugs.spotbugs-maven-plugin.version>
     <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
-    <sonar.java.spotbugs.reportPaths>/Users/dboeckma/github/poc-bom/target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
+    <sonar.java.spotbugs.reportPaths>/home/runner/work/poc-bom/poc-bom/target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
     <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
-    <sonar.dependencyCheck.htmlReportPath>/Users/dboeckma/github/poc-bom/target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+    <sonar.dependencyCheck.htmlReportPath>/home/runner/work/poc-bom/poc-bom/target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
     <org.junit.version>5.7.0</org.junit.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <sonar.tests>.</sonar.tests>
@@ -77,13 +77,13 @@
     <maven.required.version>3.6.3</maven.required.version>
     <sonar.test.inclusions>**/*Test*/**,**/*TestIT*/**</sonar.test.inclusions>
     <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-    <sonar.coverage.jacoco.xmlReportPaths>/Users/dboeckma/github/poc-bom/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.test.exclusions></sonar.test.exclusions>
     <sonar.skip>false</sonar.skip>
     <maven.compiler.source>11</maven.compiler.source>
     <org.mockito.version>3.6.0</org.mockito.version>
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-    <revision>0.0.5</revision>
+    <revision>0.0.7</revision>
     <org.jacoco.jacoco-maven-plugin.version>0.8.6</org.jacoco.jacoco-maven-plugin.version>
     <org.codehaus.mojo.flatten-maven-plugin.version>1.2.5</org.codehaus.mojo.flatten-maven-plugin.version>
     <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
@@ -91,13 +91,13 @@
     <changelist>-SNAPSHOT</changelist>
     <org.sonarsource.scanner.maven.sonar-maven-plugin.version>3.7.0.1746</org.sonarsource.scanner.maven.sonar-maven-plugin.version>
     <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-    <sonar.dependencyCheck.reportPath>/Users/dboeckma/github/poc-bom/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+    <sonar.dependencyCheck.reportPath>/home/runner/work/poc-bom/poc-bom/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
     <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
     <sonar.exclusions>**/*Test*/**,**/*TestIT*/**</sonar.exclusions>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.inclusions>src/main/**</sonar.inclusions>
     <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-    <sonar.java.pmd.reportPaths>/Users/dboeckma/github/poc-bom/target/pmd.xml</sonar.java.pmd.reportPaths>
+    <sonar.java.pmd.reportPaths>/home/runner/work/poc-bom/poc-bom/target/pmd.xml</sonar.java.pmd.reportPaths>
     <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
     <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
   </properties>
@@ -268,23 +268,23 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
-    <sourceDirectory>/Users/dboeckma/github/poc-bom/src/main/java</sourceDirectory>
-    <scriptSourceDirectory>/Users/dboeckma/github/poc-bom/src/main/scripts</scriptSourceDirectory>
-    <testSourceDirectory>/Users/dboeckma/github/poc-bom/src/test/java</testSourceDirectory>
-    <outputDirectory>/Users/dboeckma/github/poc-bom/target/classes</outputDirectory>
-    <testOutputDirectory>/Users/dboeckma/github/poc-bom/target/test-classes</testOutputDirectory>
+    <sourceDirectory>/home/runner/work/poc-bom/poc-bom/src/main/java</sourceDirectory>
+    <scriptSourceDirectory>/home/runner/work/poc-bom/poc-bom/src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>/home/runner/work/poc-bom/poc-bom/src/test/java</testSourceDirectory>
+    <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/classes</outputDirectory>
+    <testOutputDirectory>/home/runner/work/poc-bom/poc-bom/target/test-classes</testOutputDirectory>
     <resources>
       <resource>
-        <directory>/Users/dboeckma/github/poc-bom/src/main/resources</directory>
+        <directory>/home/runner/work/poc-bom/poc-bom/src/main/resources</directory>
       </resource>
     </resources>
     <testResources>
       <testResource>
-        <directory>/Users/dboeckma/github/poc-bom/src/test/resources</directory>
+        <directory>/home/runner/work/poc-bom/poc-bom/src/test/resources</directory>
       </testResource>
     </testResources>
-    <directory>/Users/dboeckma/github/poc-bom/target</directory>
-    <finalName>poc-bom-0.0.5-SNAPSHOT</finalName>
+    <directory>/home/runner/work/poc-bom/poc-bom/target</directory>
+    <finalName>poc-bom-0.0.7-SNAPSHOT</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -350,7 +350,7 @@
           <configuration>
             <excludedGroups>acceptance, integration, regression</excludedGroups>
             <argLine>${surefireArgLine}</argLine>
-            <classesDirectory>/Users/dboeckma/github/poc-bom/target/classes</classesDirectory>
+            <classesDirectory>/home/runner/work/poc-bom/poc-bom/target/classes</classesDirectory>
           </configuration>
         </plugin>
         <plugin>
@@ -365,7 +365,7 @@
               <configuration>
                 <groups>acceptance, integration, regression</groups>
                 <argLine>${failsafeArgLine}</argLine>
-                <classesDirectory>/Users/dboeckma/github/poc-bom/target/classes</classesDirectory>
+                <classesDirectory>/home/runner/work/poc-bom/poc-bom/target/classes</classesDirectory>
               </configuration>
             </execution>
           </executions>
@@ -400,7 +400,7 @@
                 <goal>prepare-agent</goal>
               </goals>
               <configuration>
-                <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-ut.exec</destFile>
+                <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-ut.exec</destFile>
                 <propertyName>surefireArgLine</propertyName>
               </configuration>
             </execution>
@@ -410,7 +410,7 @@
                 <goal>prepare-agent-integration</goal>
               </goals>
               <configuration>
-                <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-it.exec</destFile>
+                <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-it.exec</destFile>
                 <propertyName>failsafeArgLine</propertyName>
               </configuration>
             </execution>
@@ -421,8 +421,8 @@
                 <goal>report</goal>
               </goals>
               <configuration>
-                <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-it.exec</dataFile>
-                <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-it</outputDirectory>
+                <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-it.exec</dataFile>
+                <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-it</outputDirectory>
               </configuration>
             </execution>
             <execution>
@@ -432,8 +432,8 @@
                 <goal>report</goal>
               </goals>
               <configuration>
-                <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-ut.exec</dataFile>
-                <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-ut</outputDirectory>
+                <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-ut.exec</dataFile>
+                <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-ut</outputDirectory>
               </configuration>
             </execution>
             <execution>
@@ -445,13 +445,13 @@
               <configuration>
                 <fileSets>
                   <fileSet>
-                    <directory>/Users/dboeckma/github/poc-bom/target/coverage-reports</directory>
+                    <directory>/home/runner/work/poc-bom/poc-bom/target/coverage-reports</directory>
                     <includes>
                       <include>*.exec</include>
                     </includes>
                   </fileSet>
                 </fileSets>
-                <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-aggregate.exec</destFile>
+                <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-aggregate.exec</destFile>
               </configuration>
             </execution>
             <execution>
@@ -461,8 +461,8 @@
                 <goal>report</goal>
               </goals>
               <configuration>
-                <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-aggregate.exec</dataFile>
-                <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-aggregate</outputDirectory>
+                <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-aggregate.exec</dataFile>
+                <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-aggregate</outputDirectory>
               </configuration>
             </execution>
           </executions>
@@ -594,7 +594,7 @@
             </execution>
           </executions>
           <configuration>
-            <tag>0.0.5-SNAPSHOT</tag>
+            <tag>0.0.7-SNAPSHOT</tag>
           </configuration>
         </plugin>
         <plugin>
@@ -707,7 +707,7 @@
         <configuration>
           <excludedGroups>acceptance, integration, regression</excludedGroups>
           <argLine>${surefireArgLine}</argLine>
-          <classesDirectory>/Users/dboeckma/github/poc-bom/target/classes</classesDirectory>
+          <classesDirectory>/home/runner/work/poc-bom/poc-bom/target/classes</classesDirectory>
         </configuration>
       </plugin>
       <plugin>
@@ -722,7 +722,7 @@
             <configuration>
               <groups>acceptance, integration, regression</groups>
               <argLine>${failsafeArgLine}</argLine>
-              <classesDirectory>/Users/dboeckma/github/poc-bom/target/classes</classesDirectory>
+              <classesDirectory>/home/runner/work/poc-bom/poc-bom/target/classes</classesDirectory>
             </configuration>
           </execution>
         </executions>
@@ -738,7 +738,7 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-              <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-ut.exec</destFile>
+              <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-ut.exec</destFile>
               <propertyName>surefireArgLine</propertyName>
             </configuration>
           </execution>
@@ -748,7 +748,7 @@
               <goal>prepare-agent-integration</goal>
             </goals>
             <configuration>
-              <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-it.exec</destFile>
+              <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-it.exec</destFile>
               <propertyName>failsafeArgLine</propertyName>
             </configuration>
           </execution>
@@ -759,8 +759,8 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-it.exec</dataFile>
-              <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-it</outputDirectory>
+              <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-it.exec</dataFile>
+              <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-it</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -770,8 +770,8 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-ut.exec</dataFile>
-              <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-ut</outputDirectory>
+              <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-ut.exec</dataFile>
+              <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-ut</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -783,13 +783,13 @@
             <configuration>
               <fileSets>
                 <fileSet>
-                  <directory>/Users/dboeckma/github/poc-bom/target/coverage-reports</directory>
+                  <directory>/home/runner/work/poc-bom/poc-bom/target/coverage-reports</directory>
                   <includes>
                     <include>*.exec</include>
                   </includes>
                 </fileSet>
               </fileSets>
-              <destFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-aggregate.exec</destFile>
+              <destFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-aggregate.exec</destFile>
             </configuration>
           </execution>
           <execution>
@@ -799,8 +799,8 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>/Users/dboeckma/github/poc-bom/target/coverage-reports/jacoco-aggregate.exec</dataFile>
-              <outputDirectory>/Users/dboeckma/github/poc-bom/target/site/jacoco-aggregate</outputDirectory>
+              <dataFile>/home/runner/work/poc-bom/poc-bom/target/coverage-reports/jacoco-aggregate.exec</dataFile>
+              <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site/jacoco-aggregate</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -860,7 +860,7 @@
     </plugins>
   </build>
   <reporting>
-    <outputDirectory>/Users/dboeckma/github/poc-bom/target/site</outputDirectory>
+    <outputDirectory>/home/runner/work/poc-bom/poc-bom/target/site</outputDirectory>
   </reporting>
   <profiles>
     <profile>
