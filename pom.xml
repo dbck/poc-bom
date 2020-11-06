@@ -13,13 +13,13 @@
 
   <properties>
     <!-- Change revision after release manually -->
-    <revision>0.0.7</revision>
+    <revision>0.0.8</revision>
     <sha1 />
     <changelist>-SNAPSHOT</changelist>
     <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.required.version>3.6.3</maven.required.version>
+    <maven.required.version>[3.6.0,)</maven.required.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -288,6 +288,13 @@
                   <requireMavenVersion>
                     <version>${maven.required.version}</version>
                   </requireMavenVersion>
+                  <requireJavaVersion>
+                    <version>${java.version}</version>
+                  </requireJavaVersion>
+                  <requireReleaseDeps>
+                    <onlyWhenRelease>true</onlyWhenRelease>
+                    <message>Release builds must not have on snapshot dependencies</message>
+                  </requireReleaseDeps>
                 </rules>
               </configuration>
             </execution>
@@ -562,7 +569,6 @@
             </execution>
           </executions>
         </plugin>
-
       </plugins>
     </pluginManagement>
 
@@ -645,32 +651,6 @@
           </pomElements>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.eclipse.m2e</groupId>
-        <artifactId>lifecycle-mapping</artifactId>
-        <version>${org.eclipse.m2e.lifecycle-mapping.version}</version>
-        <configuration>
-          <lifecycleMappingMetadata>
-            <pluginExecutions>
-              <pluginExecution>
-                <pluginExecutionFilter>
-                  <groupId>org.codehaus.mojo</groupId>
-                  <artifactId>flatten-maven-plugin</artifactId>
-                  <versionRange>[1.0.0,)</versionRange>
-                  <goals>
-                    <goal>flatten</goal>
-                  </goals>
-                </pluginExecutionFilter>
-                <action>
-                  <execute>
-                    <runOnIncremental>false</runOnIncremental>
-                  </execute>
-                </action>
-              </pluginExecution>
-            </pluginExecutions>
-          </lifecycleMappingMetadata>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 
@@ -735,29 +715,6 @@
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-enforcer-plugin</artifactId>
-            <version>${maven-enforcer-plugin.version}</version>
-            <executions>
-              <execution>
-                <id>enforce-no-snapshots</id>
-                <goals>
-                  <goal>enforce</goal>
-                </goals>
-                <configuration>
-                  <rules>
-                    <requireReleaseDeps>
-                      <message>Use of snapshots not allowed! Please
-                        check
-                        dependencies and plugins in pom.xml!</message>
-                    </requireReleaseDeps>
-                  </rules>
-                  <fail>true</fail>
-                </configuration>
-              </execution>
-            </executions>
           </plugin>
         </plugins>
       </build>
