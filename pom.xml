@@ -607,35 +607,35 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>flatten-maven-plugin</artifactId>
         <configuration>
-            <flattenMode>bom</flattenMode>
-            <pomElements>
-              <build/>
-              <ciManagement/>
-              <contributors/>
-              <dependencies/>
-              <dependencyManagement/>
-              <description/>
-              <developers/>
-              <distributionManagement/>
-              <inceptionYear/>
-              <issueManagement/>
-              <mailingLists/>
-              <modules/>
-              <name/>
-              <organization/>
-              <parent/>
-              <pluginManagement/>
-              <pluginRepositories/>
-              <prerequisites/>
-              <profiles/>
-              <properties/>
-              <reporting/>
-              <repositories/>
-              <scm/>
-              <url/>
-              <version/>
-            </pomElements>
-          </configuration>
+          <flattenMode>bom</flattenMode>
+          <pomElements>
+            <build />
+            <ciManagement />
+            <contributors />
+            <dependencies />
+            <dependencyManagement />
+            <description />
+            <developers />
+            <distributionManagement />
+            <inceptionYear />
+            <issueManagement />
+            <mailingLists />
+            <modules />
+            <name />
+            <organization />
+            <parent />
+            <pluginManagement />
+            <pluginRepositories />
+            <prerequisites />
+            <profiles />
+            <properties />
+            <reporting />
+            <repositories />
+            <scm />
+            <url />
+            <version />
+          </pomElements>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -693,6 +693,10 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-scm-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
