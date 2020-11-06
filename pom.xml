@@ -87,7 +87,7 @@
 
   <scm>
     <url>${project.url}</url>
-    <connection>scm:git:${project.url}.git</connection>
+    <connection>scm:git:${project.scm.url}.git</connection>
     <developerConnection>${project.scm.connection}</developerConnection>
     <tag>HEAD</tag>
   </scm>
