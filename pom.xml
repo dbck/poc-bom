@@ -39,6 +39,7 @@
     <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
     <maven.plugins.maven-gpg-plugin.version>1.6</maven.plugins.maven-gpg-plugin.version>
+    <org.eclipse.m2e.lifecycle-mapping.version>1.0.0</org.eclipse.m2e.lifecycle-mapping.version>
     <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
     <org.codehaus.mojo.flatten-maven-plugin.version>1.2.5</org.codehaus.mojo.flatten-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
@@ -644,6 +645,32 @@
           </pomElements>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.eclipse.m2e</groupId>
+        <artifactId>lifecycle-mapping</artifactId>
+        <version>${org.eclipse.m2e.lifecycle-mapping.version}</version>
+        <configuration>
+          <lifecycleMappingMetadata>
+            <pluginExecutions>
+              <pluginExecution>
+                <pluginExecutionFilter>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>flatten-maven-plugin</artifactId>
+                  <versionRange>[1.0.0,)</versionRange>
+                  <goals>
+                    <goal>flatten</goal>
+                  </goals>
+                </pluginExecutionFilter>
+                <action>
+                  <execute>
+                    <runOnIncremental>false</runOnIncremental>
+                  </execute>
+                </action>
+              </pluginExecution>
+            </pluginExecutions>
+          </lifecycleMappingMetadata>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -722,8 +749,9 @@
                 <configuration>
                   <rules>
                     <requireReleaseDeps>
-                      <message>No Snapshots Allowed! Please check
-                        dependencies in pom.xml!</message>
+                      <message>Use of snapshots not allowed! Please
+                        check
+                        dependencies and plugins in pom.xml!</message>
                     </requireReleaseDeps>
                   </rules>
                   <fail>true</fail>
