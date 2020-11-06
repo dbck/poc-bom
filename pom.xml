@@ -19,7 +19,7 @@
     <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.required.version>3.3.9</maven.required.version>
+    <maven.required.version>3.6.3</maven.required.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -38,8 +38,9 @@
     <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
     <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
-    <maven.plugins.maven-gpg-plugin.version>1.5</maven.plugins.maven-gpg-plugin.version>
-    <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.7</org.sonatype.plugins-nexus-staging-maven-plugin.version>
+    <maven.plugins.maven-gpg-plugin.version>1.6</maven.plugins.maven-gpg-plugin.version>
+    <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
+    <org.codehaus.mojo.flatten-maven-plugin.version>1.2.5</org.codehaus.mojo.flatten-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <org.junit.version>5.7.0</org.junit.version>
     <org.assertj.version>3.18.0</org.assertj.version>
@@ -114,10 +115,10 @@
   </distributionManagement>
 
   <repositories>
-      <repository>
-          <id>ossrh</id>
-          <url>https://oss.sonatype.org/content/groups/public/</url>
-      </repository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
   </repositories>
 
   <dependencyManagement>
@@ -529,6 +530,31 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>flatten-maven-plugin</artifactId>
+          <version>${org.codehaus.mojo.flatten-maven-plugin.version}</version>
+          <configuration>
+            <updatePomFile>true</updatePomFile>
+          </configuration>
+          <executions>
+            <execution>
+              <id>flatten</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>flatten</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>flatten.clean</id>
+              <phase>clean</phase>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -576,6 +602,40 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <configuration>
+            <flattenMode>bom</flattenMode>
+            <pomElements>
+              <build/>
+              <ciManagement/>
+              <contributors/>
+              <dependencies/>
+              <dependencyManagement/>
+              <description/>
+              <developers/>
+              <distributionManagement/>
+              <inceptionYear/>
+              <issueManagement/>
+              <mailingLists/>
+              <modules/>
+              <name/>
+              <organization/>
+              <parent/>
+              <pluginManagement/>
+              <pluginRepositories/>
+              <prerequisites/>
+              <profiles/>
+              <properties/>
+              <reporting/>
+              <repositories/>
+              <scm/>
+              <url/>
+              <version/>
+            </pomElements>
+          </configuration>
       </plugin>
     </plugins>
   </build>
