@@ -13,7 +13,7 @@
 
   <properties>
     <!-- Change revision after release manually -->
-    <revision>0.0.5</revision>
+    <revision>0.0.6</revision>
     <sha1 />
     <changelist>-SNAPSHOT</changelist>
     <java.version>11</java.version>
@@ -527,6 +527,13 @@
               <goals>
                 <goal>sign</goal>
               </goals>
+              <configuration>
+                <!-- Prevent `gpg` from using pinentry programs -->
+                <gpgArguments>
+                  <arg>--pinentry-mode</arg>
+                  <arg>loopback</arg>
+                </gpgArguments>
+              </configuration>
             </execution>
           </executions>
         </plugin>
