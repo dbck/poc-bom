@@ -13,7 +13,7 @@
 
   <properties>
     <!-- Change revision after release manually -->
-    <revision>0.0.8</revision>
+    <revision>0.0.9</revision>
     <sha1 />
     <changelist>-SNAPSHOT</changelist>
     <java.version>11</java.version>
@@ -87,7 +87,7 @@
 
   <scm>
     <url>${project.url}</url>
-    <connection>scm:git:${project.url}.git</connection>
+    <connection>scm:git:${project.scm.url}.git</connection>
     <developerConnection>${project.scm.connection}</developerConnection>
     <tag>HEAD</tag>
   </scm>
