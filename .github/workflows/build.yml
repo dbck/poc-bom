@@ -24,8 +24,10 @@ jobs:
       with:
         java-version: 11
         server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
-        server-username: MAVEN_USERNAME
-        server-password: MAVEN_PASSWORD
+        server-username: OSSRH_USERNAME # env variable for username in deploy
+        server-password: OSSRH_PASSWORD # env variable for token in deploy
+        gpg-private-key: ${{ secrets.OSSRH_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+        gpg-passphrase: OSSRH_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
     - name: Prepare version
       run: |
@@ -40,9 +42,10 @@ jobs:
       run: mvn ${MAVEN_OPTIONS} -Dsha1="${REVISION_BRANCH}" -Dchangelist="${REVISION_TYPE}" deploy
       env:
         MAVEN_OPTIONS: --quiet --batch-mode --no-transfer-progress
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
         GITHUB_TOKEN: ${{ github.token }}
+        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        OSSRH_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_PASSPHRASE }}
 
 
 #    - name: Quality check with maven and sonar
