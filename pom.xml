@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.12-SNAPSHOT</version>
+  <version>1.0.13-SNAPSHOT</version>
   <name>poc-bom</name>
   <description>POC BOM</description>
   <url>https://github.com/dbck/poc-bom</url>
@@ -12,9 +12,9 @@
   <packaging>pom</packaging>
 
   <properties>
-    <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>11</java.version>
     <maven.required.version>[3.6.0,)</maven.required.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -47,9 +47,9 @@
     <org.sonarsource.scanner.maven.sonar-maven-plugin.version>3.7.0.1746</org.sonarsource.scanner.maven.sonar-maven-plugin.version>
     <sonar.skip>false</sonar.skip>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.organization>dbck</sonar.organization>
+    <sonar.organization>${organization.name}</sonar.organization>
     <sonar.projectName>${project.artifactId}</sonar.projectName>
-    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
+    <sonar.projectKey>${sonar.organization}_${sonar.projectName}</sonar.projectKey>
     <sonar.sources>.</sonar.sources>
     <sonar.inclusions>src/main/**</sonar.inclusions>
     <sonar.exclusions>**/*Test*/**,**/*TestIT*/**</sonar.exclusions>
@@ -70,6 +70,10 @@
       <url>https://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
   </licenses>
+
+  <organization>
+    <name>dbck</name>
+  </organization>
 
   <developers>
     <developer>
@@ -288,7 +292,8 @@
                   </requireJavaVersion>
                   <requireReleaseDeps>
                     <onlyWhenRelease>true</onlyWhenRelease>
-                    <message>Release builds must not have on snapshot dependencies</message>
+                    <message>Release builds must not have on snapshot
+                      dependencies</message>
                   </requireReleaseDeps>
                 </rules>
               </configuration>
