@@ -53,8 +53,8 @@
     <sonar.skip>false</sonar.skip>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>dbck</sonar.organization>
-    <!--<sonar.projectName>${project.name}</sonar.projectName> -->
-    <!--<sonar.projectKey>${project.name}</sonar.projectKey> -->
+    <sonar.projectName>${project.artifactId}</sonar.projectName>
+    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
     <sonar.sources>.</sonar.sources>
     <sonar.inclusions>src/main/**</sonar.inclusions>
     <sonar.exclusions>**/*Test*/**,**/*TestIT*/**</sonar.exclusions>
