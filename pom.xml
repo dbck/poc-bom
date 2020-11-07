@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>${revision}${sha1}${changelist}</version>
+  <version>1.0.11-SNAPSHOT</version>
   <name>poc-bom</name>
   <description>POC BOM</description>
   <url>https://github.com/dbck/poc-bom</url>
@@ -12,10 +12,6 @@
   <packaging>pom</packaging>
 
   <properties>
-    <!-- Change revision after release manually -->
-    <revision>0.0.9</revision>
-    <sha1 />
-    <changelist>-SNAPSHOT</changelist>
     <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -41,7 +37,6 @@
     <maven.plugins.maven-gpg-plugin.version>1.6</maven.plugins.maven-gpg-plugin.version>
     <org.eclipse.m2e.lifecycle-mapping.version>1.0.0</org.eclipse.m2e.lifecycle-mapping.version>
     <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
-    <org.codehaus.mojo.flatten-maven-plugin.version>1.2.5</org.codehaus.mojo.flatten-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <org.junit.version>5.7.0</org.junit.version>
     <org.assertj.version>3.18.0</org.assertj.version>
@@ -53,8 +48,8 @@
     <sonar.skip>false</sonar.skip>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>dbck</sonar.organization>
-    <!--<sonar.projectName>${project.name}</sonar.projectName> -->
-    <!--<sonar.projectKey>${project.name}</sonar.projectKey> -->
+    <sonar.projectName>${project.artifactId}</sonar.projectName>
+    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
     <sonar.sources>.</sonar.sources>
     <sonar.inclusions>src/main/**</sonar.inclusions>
     <sonar.exclusions>**/*Test*/**,**/*TestIT*/**</sonar.exclusions>
@@ -545,30 +540,6 @@
             </execution>
           </executions>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>flatten-maven-plugin</artifactId>
-          <version>${org.codehaus.mojo.flatten-maven-plugin.version}</version>
-          <configuration>
-            <updatePomFile>true</updatePomFile>
-          </configuration>
-          <executions>
-            <execution>
-              <id>flatten</id>
-              <phase>process-resources</phase>
-              <goals>
-                <goal>flatten</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>flatten.clean</id>
-              <phase>clean</phase>
-              <goals>
-                <goal>clean</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -616,40 +587,6 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>flatten-maven-plugin</artifactId>
-        <configuration>
-          <flattenMode>bom</flattenMode>
-          <pomElements>
-            <build />
-            <ciManagement />
-            <contributors />
-            <dependencies />
-            <dependencyManagement />
-            <description />
-            <developers />
-            <distributionManagement />
-            <inceptionYear />
-            <issueManagement />
-            <mailingLists />
-            <modules />
-            <name />
-            <organization />
-            <parent />
-            <pluginManagement />
-            <pluginRepositories />
-            <prerequisites />
-            <profiles />
-            <properties />
-            <reporting />
-            <repositories />
-            <scm />
-            <url />
-            <version />
-          </pomElements>
-        </configuration>
       </plugin>
     </plugins>
   </build>
