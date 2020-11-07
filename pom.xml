@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.13-SNAPSHOT</version>
+  <version>1.0.14-SNAPSHOT</version>
   <name>poc-bom</name>
   <description>POC BOM</description>
   <url>https://github.com/dbck/poc-bom</url>
@@ -47,7 +47,7 @@
     <org.sonarsource.scanner.maven.sonar-maven-plugin.version>3.7.0.1746</org.sonarsource.scanner.maven.sonar-maven-plugin.version>
     <sonar.skip>false</sonar.skip>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.organization>${organization.name}</sonar.organization>
+    <sonar.organization>${project.organization.name}</sonar.organization>
     <sonar.projectName>${project.artifactId}</sonar.projectName>
     <sonar.projectKey>${sonar.organization}_${sonar.projectName}</sonar.projectKey>
     <sonar.sources>.</sonar.sources>
