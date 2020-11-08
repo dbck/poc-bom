@@ -5,9 +5,9 @@
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
   <version>1.0.16-SNAPSHOT</version>
-  <name>poc-bom</name>
   <description>POC BOM</description>
-  <url>https://github.com/dbck/poc-bom</url>
+  <name>${project.artifactId}</name>
+  <url>https://github.com/dbck/${project.artifactId}</url>
 
   <packaging>pom</packaging>
 
