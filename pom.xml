@@ -35,7 +35,7 @@
     <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
     <maven.plugins.maven-gpg-plugin.version>1.6</maven.plugins.maven-gpg-plugin.version>
-    <org.eclipse.m2e.lifecycle-mapping.version>1.0.0</org.eclipse.m2e.lifecycle-mapping.version>
+    <pl.project13.maven.git-commit-id-plugin.version>4.0.3</pl.project13.maven.git-commit-id-plugin.version>
     <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <org.junit.version>5.7.0</org.junit.version>
@@ -297,6 +297,30 @@
                   </requireReleaseDeps>
                 </rules>
               </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>pl.project13.maven</groupId>
+          <artifactId>git-commit-id-plugin</artifactId>
+          <version>${pl.project13.maven.git-commit-id-plugin.version}</version>
+          <configuration>
+            <failOnNoGitDirectory>false</failOnNoGitDirectory>
+            <generateGitPropertiesFile>true</generateGitPropertiesFile>
+            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+            <includeOnlyProperties>
+              <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+              <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+            </includeOnlyProperties>
+            <commitIdGenerationMode>full</commitIdGenerationMode>
+          </configuration>
+          <executions>
+            <execution>
+              <id>get-the-git-infos</id>
+              <phase>initialize</phase>
+              <goals>
+                <goal>revision</goal>
+              </goals>
             </execution>
           </executions>
         </plugin>
@@ -588,6 +612,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
