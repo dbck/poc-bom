@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-#      with:
-#        fetch-depth: 0
 
     - name: Set up JDK
       uses: actions/setup-java@v1
@@ -37,7 +35,6 @@ jobs:
         echo "REVISION_BRANCH=${REVISION_BRANCH}" >> $GITHUB_ENV
         export REVISION_TYPE=$([[ ${CURRENT_BRANCH} != "release" ]] && echo "-SNAPSHOT")
         echo "REVISION_TYPE=${REVISION_TYPE}" >> $GITHUB_ENV
-
 
     - name: Build, test and deploy with maven
       run: |
