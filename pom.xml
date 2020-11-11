@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.21-SNAPSHOT</version>
+  <version>1.0.22-SNAPSHOT</version>
   <description>POC BOM</description>
   <name>${project.artifactId}</name>
   <url>https://github.com/dbck/${project.artifactId}</url>
@@ -661,6 +661,15 @@
           </plugin>
         </plugins>
       </build>
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jxr-plugin</artifactId>
+            <version>${maven-jxr-plugin.version}</version>
+          </plugin>
+        </plugins>
+      </reporting>
     </profile>
     <profile>
       <id>release</id>
