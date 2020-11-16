@@ -54,12 +54,6 @@
     <sonar.organization>${project.organization.name}</sonar.organization>
     <sonar.projectName>${project.artifactId}</sonar.projectName>
     <sonar.projectKey>${sonar.organization}_${sonar.projectName}</sonar.projectKey>
-    <sonar.sources>.</sonar.sources>
-    <sonar.inclusions>src/main/**</sonar.inclusions>
-    <sonar.exclusions>**/*Test*/**,**/*TestIT*/**</sonar.exclusions>
-    <sonar.tests>.</sonar.tests>
-    <sonar.test.inclusions>**/*Test*/**,**/*TestIT*/**</sonar.test.inclusions>
-    <sonar.test.exclusions />
     <sonar.java.spotbugs.reportPaths>${project.build.directory}/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
     <sonar.java.pmd.reportPaths>${project.build.directory}/pmd.xml</sonar.java.pmd.reportPaths>
     <sonar.java.checkstyle.reportPaths>${project.build.directory}/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
