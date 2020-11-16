@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.23-SNAPSHOT</version>
+  <version>1.0.24-SNAPSHOT</version>
   <description>POC BOM</description>
   <name>${project.artifactId}</name>
   <url>https://github.com/dbck/${project.artifactId}</url>
@@ -25,6 +25,7 @@
     <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
     <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
     <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+    <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
@@ -37,6 +38,8 @@
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
     <maven.plugins.maven-gpg-plugin.version>1.6</maven.plugins.maven-gpg-plugin.version>
     <pl.project13.maven.git-commit-id-plugin.version>4.0.3</pl.project13.maven.git-commit-id-plugin.version>
+    <slf4j.version>1.7.30</slf4j.version>
+    <logback.version>1.2.3</logback.version>
     <org.sonatype.plugins-nexus-staging-maven-plugin.version>1.6.8</org.sonatype.plugins-nexus-staging-maven-plugin.version>
     <org.projectlombok.lombok.version>1.18.16</org.projectlombok.lombok.version>
     <org.junit.version>5.7.0</org.junit.version>
@@ -124,6 +127,16 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
@@ -305,6 +318,10 @@
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${maven-project-info-reports-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>pl.project13.maven</groupId>
