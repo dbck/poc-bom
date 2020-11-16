@@ -655,6 +655,12 @@
       </activation>
     </profile>
     <profile>
+      <id>ossrh</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
       <id>quality</id>
       <build>
         <plugins>
