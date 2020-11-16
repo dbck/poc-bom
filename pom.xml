@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.24-SNAPSHOT</version>
+  <version>1.0.25-SNAPSHOT</version>
   <description>POC BOM</description>
   <name>${project.artifactId}</name>
   <url>https://github.com/dbck/${project.artifactId}</url>
@@ -650,6 +650,12 @@
   <profiles>
     <profile>
       <id>github</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>ossrh</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
