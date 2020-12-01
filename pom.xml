@@ -308,6 +308,9 @@
                     <message>Release builds must not have on snapshot
                       dependencies</message>
                   </requireReleaseDeps>
+                  <dependencyConvergence>
+                    <uniqueVersions>true</uniqueVersions>
+                  </dependencyConvergence>
                 </rules>
               </configuration>
             </execution>
