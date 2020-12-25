@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.27-SNAPSHOT</version>
+  <version>1.0.28-SNAPSHOT</version>
   <description>POC BOM</description>
   <name>${project.artifactId}</name>
   <url>https://github.com/dbck/${project.artifactId}</url>
@@ -45,6 +45,12 @@
     <org.junit.version>5.7.0</org.junit.version>
     <org.assertj.version>3.18.0</org.assertj.version>
     <org.mockito.version>3.6.0</org.mockito.version>
+    <com.github.javafaker.javafaker.version>1.0.2</com.github.javafaker.javafaker.version>
+    <org.testcontainers.version>1.15.1</org.testcontainers.version>
+    <org.asciidoctor.asciidoctorj.version>2.4.2</org.asciidoctor.asciidoctorj.version>
+    <org.asciidoctor.asciidoctorj-api.version>${org.asciidoctor.asciidoctorj.version}</org.asciidoctor.asciidoctorj-api.version>
+    <org.asciidoctor.asciidoctorj-pdf.version>1.5.3</org.asciidoctor.asciidoctorj-pdf.version>
+    <org.asciidoctor.asciidoctor-maven-plugin.version>2.1.0</org.asciidoctor.asciidoctor-maven-plugin.version>
     <com.github.spotbugs.spotbugs-maven-plugin.version>4.1.4</com.github.spotbugs.spotbugs-maven-plugin.version>
     <org.owasp.dependency-check-maven.version>6.0.2</org.owasp.dependency-check-maven.version>
     <org.jacoco.jacoco-maven-plugin.version>0.8.6</org.jacoco.jacoco-maven-plugin.version>
@@ -138,6 +144,21 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctorj</artifactId>
+          <version>${org.asciidoctor.asciidoctorj.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctorj-api</artifactId>
+          <version>${org.asciidoctor.asciidoctorj-api.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctorj-pdf</artifactId>
+          <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>${org.junit.version}</version>
@@ -167,6 +188,30 @@
         <artifactId>mockito-junit-jupiter</artifactId>
         <version>${org.mockito.version}</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>${com.github.javafaker.javafaker.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${org.testcontainers.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>testcontainers</artifactId>
+        <version>${org.testcontainers.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.testcontainers</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>${org.testcontainers.version}</version>
+          <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -588,6 +633,52 @@
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <!-- See https://asciidoctor.org/docs/asciidoctor-maven-plugin/ -->
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${org.asciidoctor.asciidoctor-maven-plugin.version}</version>
+            <dependencies>
+              <dependency>
+                  <groupId>org.asciidoctor</groupId>
+                  <artifactId>asciidoctorj</artifactId>
+                  <version>${org.asciidoctor.asciidoctorj.version}</version>
+              </dependency>
+              <dependency>
+                  <groupId>org.asciidoctor</groupId>
+                  <artifactId>asciidoctorj-api</artifactId>
+                  <version>${org.asciidoctor.asciidoctorj-api.version}</version>
+              </dependency>
+              <dependency>
+                  <groupId>org.asciidoctor</groupId>
+                  <artifactId>asciidoctorj-pdf</artifactId>
+                  <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
+              </dependency>
+            </dependencies>
+            <executions>
+              <execution>
+                  <id>generate-docs</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                      <goal>process-asciidoc</goal>
+                  </goals>
+                  <configuration>
+                      <backend>html5</backend>
+                      <doctype>book</doctype>
+                  </configuration>
+                </execution>
+                <execution>
+                  <id>generate-pdf-docs</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                      <goal>process-asciidoc</goal>
+                  </goals>
+                  <configuration>
+                      <backend>pdf</backend>
+                  </configuration>
+                </execution>
+             </executions>
         </plugin>
       </plugins>
     </pluginManagement>
