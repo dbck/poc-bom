@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dbck.poc</groupId>
   <artifactId>poc-bom</artifactId>
-  <version>1.0.28-SNAPSHOT</version>
+  <version>1.0.29-SNAPSHOT</version>
   <description>POC BOM</description>
   <name>${project.artifactId}</name>
   <url>https://github.com/dbck/${project.artifactId}</url>
@@ -50,6 +50,7 @@
     <org.asciidoctor.asciidoctorj.version>2.4.2</org.asciidoctor.asciidoctorj.version>
     <org.asciidoctor.asciidoctorj-api.version>${org.asciidoctor.asciidoctorj.version}</org.asciidoctor.asciidoctorj-api.version>
     <org.asciidoctor.asciidoctorj-pdf.version>1.5.3</org.asciidoctor.asciidoctorj-pdf.version>
+    <org.asciidoctor.asciidoctorj-diagram.version>2.1.0</org.asciidoctor.asciidoctorj-diagram.version>
     <org.asciidoctor.asciidoctor-maven-plugin.version>2.1.0</org.asciidoctor.asciidoctor-maven-plugin.version>
     <com.github.spotbugs.spotbugs-maven-plugin.version>4.1.4</com.github.spotbugs.spotbugs-maven-plugin.version>
     <org.owasp.dependency-check-maven.version>6.0.2</org.owasp.dependency-check-maven.version>
@@ -144,19 +145,24 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctorj</artifactId>
-          <version>${org.asciidoctor.asciidoctorj.version}</version>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctorj</artifactId>
+        <version>${org.asciidoctor.asciidoctorj.version}</version>
       </dependency>
       <dependency>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctorj-api</artifactId>
-          <version>${org.asciidoctor.asciidoctorj-api.version}</version>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctorj-api</artifactId>
+        <version>${org.asciidoctor.asciidoctorj-api.version}</version>
       </dependency>
       <dependency>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctorj-pdf</artifactId>
-          <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctorj-pdf</artifactId>
+        <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctorj-diagram</artifactId>
+        <version>${org.asciidoctor.asciidoctorj-diagram.version}</version>
       </dependency>
       <dependency>
         <groupId>org.junit</groupId>
@@ -206,12 +212,6 @@
         <artifactId>testcontainers</artifactId>
         <version>${org.testcontainers.version}</version>
         <scope>test</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.testcontainers</groupId>
-          <artifactId>postgresql</artifactId>
-          <version>${org.testcontainers.version}</version>
-          <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -639,46 +639,70 @@
           <groupId>org.asciidoctor</groupId>
           <artifactId>asciidoctor-maven-plugin</artifactId>
           <version>${org.asciidoctor.asciidoctor-maven-plugin.version}</version>
-            <dependencies>
-              <dependency>
-                  <groupId>org.asciidoctor</groupId>
-                  <artifactId>asciidoctorj</artifactId>
-                  <version>${org.asciidoctor.asciidoctorj.version}</version>
-              </dependency>
-              <dependency>
-                  <groupId>org.asciidoctor</groupId>
-                  <artifactId>asciidoctorj-api</artifactId>
-                  <version>${org.asciidoctor.asciidoctorj-api.version}</version>
-              </dependency>
-              <dependency>
-                  <groupId>org.asciidoctor</groupId>
-                  <artifactId>asciidoctorj-pdf</artifactId>
-                  <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                  <id>generate-docs</id>
-                  <phase>prepare-package</phase>
-                  <goals>
-                      <goal>process-asciidoc</goal>
-                  </goals>
-                  <configuration>
-                      <backend>html5</backend>
-                      <doctype>book</doctype>
-                  </configuration>
-                </execution>
-                <execution>
-                  <id>generate-pdf-docs</id>
-                  <phase>prepare-package</phase>
-                  <goals>
-                      <goal>process-asciidoc</goal>
-                  </goals>
-                  <configuration>
-                      <backend>pdf</backend>
-                  </configuration>
-                </execution>
-             </executions>
+          <dependencies>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj</artifactId>
+              <version>${org.asciidoctor.asciidoctorj.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-api</artifactId>
+              <version>${org.asciidoctor.asciidoctorj-api.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-pdf</artifactId>
+              <version>${org.asciidoctor.asciidoctorj-pdf.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.asciidoctor</groupId>
+              <artifactId>asciidoctorj-diagram</artifactId>
+              <version>${org.asciidoctor.asciidoctorj-diagram.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <requires>
+              <require>asciidoctor-diagram</require>
+            </requires>
+            <!-- <sourceDirectory>src/docs/asciidoc</sourceDirectory> -->
+            <!--<attributes> -->
+            <!-- Example below shows how to specify in this pom instead of 
+              System's PATH, the location of dot command of Graphviz, required by PlantUML 
+              libraries -->
+            <!-- Windows: <graphvizdot>C:\Program Files (x86)\Graphviz2.38\bin\dot.exe</graphvizdot> -->
+            <!-- *nix : <graphvizdot>/usr/local/bin/dot</graphvizdot> -->
+            <!--<graphvizdot>/usr/local/bin/dot</graphvizdot> -->
+            <!--</attributes> -->
+          </configuration>
+          <executions>
+            <execution>
+              <id>generate-docs</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <backend>html5</backend>
+                <attributes>
+                  <toc>left</toc>
+                  <icons>font</icons>
+                  <sectanchors>true</sectanchors>
+                </attributes>
+                <doctype>book</doctype>
+              </configuration>
+            </execution>
+            <execution>
+              <id>generate-pdf-docs</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <backend>pdf</backend>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
